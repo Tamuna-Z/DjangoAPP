@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>welcome to home page</h1>
+<a href="{% url 'create_room' %}">Create Room</a>
+
+<h2>
+    {% for room in rooms %}
+    <span> Contributor: @{{ room.host.username}}</span>
+    <div>{{ room.id }} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></div>
+    <small>Refers to - {{ room.topic.name}}</small><br>
+    <small>{{room.create_at}}</small><hr>
+<!--    <small> create year : {{ room.create_year}}</small>-->
+<!--    <small> create time : {{ room.create_time}}</small>-->
+
+    {% endfor %}
+</h2>
+{% endblock %}
